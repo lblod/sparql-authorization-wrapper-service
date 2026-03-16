@@ -40,6 +40,7 @@ app.use(
       if (!body) return;
       const contentType = proxyReq.getHeader('Content-Type');
 
+      // eslint-disable-next-line no-undef
       const authScopes = process.env.DEFAULT_MU_AUTH_SCOPE;
       if (authScopes) {
         proxyReq.setHeader('mu-auth-scope', authScopes);
