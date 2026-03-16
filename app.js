@@ -39,6 +39,11 @@ app.use(
       const body = req.body;
       if (!body) return;
       const contentType = proxyReq.getHeader('Content-Type');
+
+      const authScopes = process.env.DEFAULT_MU_AUTH_SCOPE;
+      if (authScopes) {
+        proxyReq.setHeader('mu-auth-scope', authScopes);
+      }
       if (/application\/sparql-query/.test(contentType)) {
         proxyReq.setHeader('Content-Length', Buffer.byteLength(body));
         proxyReq.write(body.toString());
