@@ -18,6 +18,10 @@ export const LOGLEVEL = envvar
   .default('silent')
   .asEnum(['error', 'silent']);
 
+export const DEFAULT_MU_AUTH_SCOPE = envvar
+  .get('DEFAULT_MU_AUTH_SCOPE')
+  .asString();
+
 const PREFIXES = {
   rdf: 'http://www.w3.org/1999/02/22-rdf-syntax-ns#',
   xsd: 'http://www.w3.org/2001/XMLSchema#',

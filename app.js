@@ -28,7 +28,7 @@ app.use(async function (req, res, next) {
   }
 });
 
-//When checking and authorization suceeded, just proxy the request.
+//When checking and authorization succeeded, just proxy the request.
 //We need to intercept the request first to transform the body back to a normal string or the request keeps hanging because it might not look like all data has come through yet.
 app.use(
   '/sparql',
@@ -40,10 +40,8 @@ app.use(
       if (!body) return;
       const contentType = proxyReq.getHeader('Content-Type');
 
-      // eslint-disable-next-line no-undef
-      const authScopes = process.env.DEFAULT_MU_AUTH_SCOPE;
-      if (authScopes) {
-        proxyReq.setHeader('mu-auth-scope', authScopes);
+      if (env.DEFAULT_MU_AUTH_SCOPE) {
+        proxyReq.setHeader('mu-auth-scope', env.DEFAULT_MU_AUTH_SCOPE);
       }
       if (/application\/sparql-query/.test(contentType)) {
         proxyReq.setHeader('Content-Length', Buffer.byteLength(body));
