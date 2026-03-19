@@ -1,6 +1,6 @@
 {
   "name": "sparql-authorization-wrapper-service",
-  "version": "0.0.1",
+  "version": "1.1.1",
   "type": "module",
   "description": "Wrapper for executing SPARQL queries on a mu-semtech stack with some extra authorization checks.",
   "dependencies": {
